@@ -13,13 +13,13 @@ const JUMP_VELOCITY = -400.0
 # animations
 func player_animations():
 	# on left (add is_action_just_released so you continue running after jumping)
-	if Input.is_action_pressed("ui_left") || Input.is_action_just_released("ui_jump"):
+	if Input.is_action_pressed("ui_left") && Global.is_jumping == false:
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.play("run")
 		$CollisionShape2D.position.x = 7
 
 	# on right (add is_action_just_released so you continue running after jumping)
-	if Input.is_action_pressed("ui_right") || Input.is_action_just_released("ui_jump"):
+	if Input.is_action_pressed("ui_right") && Global.is_jumping == false:
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.play("run")
 		$CollisionShape2D.position.x = -7
@@ -67,12 +67,15 @@ func _input(event):
 		if Input.is_action_pressed("ui_up"):
 			$AnimatedSprite2D.play("climb")
 			gravity = 100
-			velocity.y = -200
+			velocity.y = -160
+			Global.is_jumping = false
+			
 
 	# reset gravity
 	else:
 		gravity = 200
 		Global.is_climbing = false
+		Global.is_jumping = false
 	
 
 func _on_animated_sprite_2d_animation_finished():

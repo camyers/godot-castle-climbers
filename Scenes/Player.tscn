@@ -283,6 +283,6 @@ shape = SubResource("RectangleShape2D_p1c7y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mhu28")
-animation = &"run"
+animation = &"attack"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://df10ubavtxokl"]
+[gd_scene load_steps=9 format=3 uid="uid://cwm553p4qxdrd"]
 
-[ext_resource type="PackedScene" uid="uid://bt1q38spsp8tq" path="res://Scenes/Player.tscn" id="1_oym1d"]
-[ext_resource type="Texture2D" uid="uid://1bdvd6pt2ktd" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="2_hij06"]
-[ext_resource type="Texture2D" uid="uid://sufk471liay6" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Decorations (32x32).png" id="2_m8516"]
-[ext_resource type="PackedScene" uid="uid://dx2malabpf5u1" path="res://Scenes/Ladder.tscn" id="3_dyuk1"]
+[ext_resource type="Texture2D" uid="uid://1bdvd6pt2ktd" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="1_k56l2"]
+[ext_resource type="Texture2D" uid="uid://sufk471liay6" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Decorations (32x32).png" id="2_rhmkf"]
+[ext_resource type="PackedScene" uid="uid://dx2malabpf5u1" path="res://Scenes/Ladder.tscn" id="3_qy7pj"]
+[ext_resource type="PackedScene" uid="uid://bt1q38spsp8tq" path="res://Scenes/Player.tscn" id="4_n3h3v"]
+[ext_resource type="PackedScene" uid="uid://b8ttjogek8clr" path="res://Scenes/Platform.tscn" id="5_3ho84"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yky32"]
-texture = ExtResource("2_hij06")
+texture = ExtResource("1_k56l2")
 2:2/0 = 0
 2:2/0/terrain_set = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -1042,7 +1043,7 @@ texture = ExtResource("2_hij06")
 35:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kc6so"]
-texture = ExtResource("2_m8516")
+texture = ExtResource("2_rhmkf")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -1143,25 +1144,25 @@ metadata/_edit_lock_ = true
 position = Vector2(-13, 0)
 metadata/_edit_lock_ = true
 
-[node name="Ladder" parent="Ladders" instance=ExtResource("3_dyuk1")]
+[node name="Ladder" parent="Ladders" instance=ExtResource("3_qy7pj")]
 position = Vector2(1003, 560)
 
-[node name="Ladder2" parent="Ladders" instance=ExtResource("3_dyuk1")]
+[node name="Ladder2" parent="Ladders" instance=ExtResource("3_qy7pj")]
 position = Vector2(381, 96)
 
-[node name="Ladder3" parent="Ladders" instance=ExtResource("3_dyuk1")]
+[node name="Ladder3" parent="Ladders" instance=ExtResource("3_qy7pj")]
 position = Vector2(715, 448)
 scale = Vector2(1, 0.75)
 
-[node name="Ladder4" parent="Ladders" instance=ExtResource("3_dyuk1")]
+[node name="Ladder4" parent="Ladders" instance=ExtResource("3_qy7pj")]
 position = Vector2(252, 352)
 scale = Vector2(1, 0.75)
 
-[node name="Ladder5" parent="Ladders" instance=ExtResource("3_dyuk1")]
+[node name="Ladder5" parent="Ladders" instance=ExtResource("3_qy7pj")]
 position = Vector2(843, 248)
 scale = Vector2(1, 0.875)
 
-[node name="Ladder6" parent="Ladders" instance=ExtResource("3_dyuk1")]
+[node name="Ladder6" parent="Ladders" instance=ExtResource("3_qy7pj")]
 position = Vector2(95, 448)
 
 [node name="Level" type="TileMap" parent="."]
@@ -1173,6 +1174,12 @@ layer_1/tile_data = PackedInt32Array(2621440, 131072, 19, 2621441, 262144, 19, 2
 layer_2/name = "Decorations"
 layer_2/tile_data = PackedInt32Array(2359304, 262145, 6, 2424840, 262145, 7, 2490376, 262145, 8, 2555912, 262145, 9, 2359305, 327681, 6, 2424841, 327681, 7, 2490377, 327681, 8, 2555913, 327681, 9, 2359306, 393217, 6, 2424842, 393217, 7, 2490378, 393217, 8, 2555914, 393217, 9, 2359341, 262145, 6, 2424877, 262145, 7, 2490413, 262145, 8, 2555949, 262145, 9, 2359342, 327681, 6, 2424878, 327681, 7, 2490414, 327681, 8, 2555950, 327681, 9, 2359343, 393217, 6, 2424879, 393217, 7, 2490415, 393217, 8, 2555951, 393217, 9, 1835023, 262145, 6, 1900559, 262145, 7, 1966095, 262145, 8, 2031631, 262145, 9, 1835024, 327681, 6, 1900560, 327681, 7, 1966096, 327681, 8, 2031632, 327681, 9, 1835025, 393217, 6, 1900561, 393217, 7, 1966097, 393217, 8, 2031633, 393217, 9, 1835046, 262145, 6, 1900582, 262145, 7, 1966118, 262145, 8, 2031654, 262145, 9, 1835047, 327681, 6, 1900583, 327681, 7, 1966119, 327681, 8, 2031655, 327681, 9, 1835048, 393217, 6, 1900584, 393217, 7, 1966120, 393217, 8, 2031656, 393217, 9, 1638453, 262145, 9, 1638454, 327681, 9, 1638455, 393217, 9, 1048619, 262145, 6, 1114155, 262145, 7, 1179691, 262145, 8, 1245227, 262145, 9, 1048620, 327681, 6, 1114156, 327681, 7, 1179692, 327681, 8, 1245228, 327681, 9, 1048621, 393217, 6, 1114157, 393217, 7, 1179693, 393217, 8, 1245229, 393217, 9, 458810, 262145, 6, 524346, 262145, 7, 589882, 262145, 8, 655418, 262145, 9, 458811, 327681, 6, 524347, 327681, 7, 589883, 327681, 8, 655419, 327681, 9, 458812, 393217, 6, 524348, 393217, 7, 589884, 393217, 8, 655420, 393217, 9, 458780, 262145, 6, 524316, 262145, 7, 589852, 262145, 8, 655388, 262145, 9, 458781, 327681, 6, 524317, 327681, 7, 589853, 327681, 8, 655389, 327681, 9, 458782, 393217, 6, 524318, 393217, 7, 589854, 393217, 8, 655390, 393217, 9)
 
-[node name="Player" parent="." instance=ExtResource("1_oym1d")]
+[node name="Player" parent="." instance=ExtResource("4_n3h3v")]
 position = Vector2(72, 611)
 metadata/_edit_lock_ = true
+
+[node name="Platform" parent="." instance=ExtResource("5_3ho84")]
+position = Vector2(384, 224)
+movement_range = 65
+wait_time_at_top = 1.0
+wait_time_at_bottom = 1.0
