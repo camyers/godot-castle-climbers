@@ -1198,39 +1198,39 @@ metadata/_edit_lock_ = true
 
 [node name="Platforms" type="Node2D" parent="."]
 
-[node name="5th Floor - Platform 1" parent="Platforms" instance=ExtResource("5_3ho84")]
-position = Vector2(376, 64)
-movement_range = 65
-wait_time_at_top = 1.0
-wait_time_at_bottom = 1.0
-
 [node name="5th Floor - Platform 2" parent="Platforms" instance=ExtResource("5_3ho84")]
 position = Vector2(544, 64)
-movement_range = 65
+movement_speed = 65.0
+movement_range = 48
 wait_time_at_top = 1.0
 wait_time_at_bottom = 1.0
 
-[node name="2nd Floor - Platform 2" parent="Platforms" instance=ExtResource("5_3ho84")]
-position = Vector2(720, 384)
-movement_range = 65
-wait_time_at_top = 1.0
-wait_time_at_bottom = 1.0
-
-[node name="2nd Floor - Platform 1" parent="Platforms" instance=ExtResource("5_3ho84")]
-position = Vector2(560, 384)
-movement_range = 65
-wait_time_at_top = 1.0
-wait_time_at_bottom = 1.0
-
-[node name="3rd Floor - Platform 1" parent="Platforms" instance=ExtResource("5_3ho84")]
-position = Vector2(640, 224)
-movement_range = 65
-wait_time_at_top = 1.0
-wait_time_at_bottom = 1.0
+[node name="5th Floor - Platform 1" parent="Platforms" instance=ExtResource("5_3ho84")]
+position = Vector2(376, 64)
+movement_speed = 100.0
+movement_range = 48
+wait_time_at_top = 2.0
+wait_time_at_bottom = 2.0
 
 [node name="3rd Floor - Platform 2" parent="Platforms" instance=ExtResource("5_3ho84")]
 position = Vector2(704, 224)
-movement_range = 65
+movement_speed = 40.0
+movement_range = 48
+wait_time_at_top = 2.0
+wait_time_at_bottom = 2.0
+
+[node name="3rd Floor - Platform 1" parent="Platforms" instance=ExtResource("5_3ho84")]
+position = Vector2(640, 224)
+movement_range = 48
+
+[node name="2nd Floor - Platform 2" parent="Platforms" instance=ExtResource("5_3ho84")]
+position = Vector2(720, 384)
+movement_range = 48
+
+[node name="2nd Floor - Platform 1" parent="Platforms" instance=ExtResource("5_3ho84")]
+position = Vector2(560, 384)
+movement_speed = 36.0
+movement_range = 48
 wait_time_at_top = 1.0
 wait_time_at_bottom = 1.0
 

@@ -17,7 +17,7 @@ var progress = 0.0
 @export var movement_range = 50
 
 #wait times
-@export  var wait_time_at_top = 3.0 # Time in seconds to wait at top
+@export var wait_time_at_top = 3.0 # Time in seconds to wait at top
 @export var wait_time_at_bottom = 3.0 # Time in seconds to wait at top
 
 #sets platforms y position on game start and switches the state
