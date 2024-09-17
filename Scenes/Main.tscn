@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://df10ubavtxokl"]
+[gd_scene load_steps=8 format=3 uid="uid://df10ubavtxokl"]
 
 [ext_resource type="PackedScene" uid="uid://bt1q38spsp8tq" path="res://Scenes/Player.tscn" id="1_oym1d"]
 [ext_resource type="Texture2D" uid="uid://1bdvd6pt2ktd" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="2_hij06"]
 [ext_resource type="Texture2D" uid="uid://sufk471liay6" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Decorations (32x32).png" id="2_m8516"]
 [ext_resource type="PackedScene" uid="uid://dx2malabpf5u1" path="res://Scenes/Ladder.tscn" id="3_dyuk1"]
-[ext_resource type="PackedScene" uid="uid://cl7t8miub3fmr" path="res://Scenes/Bomb.tscn" id="4_fa71g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yky32"]
 texture = ExtResource("2_hij06")
@@ -1164,9 +1163,6 @@ scale = Vector2(1, 0.875)
 
 [node name="Ladder6" parent="Ladders" instance=ExtResource("3_dyuk1")]
 position = Vector2(95, 448)
-
-[node name="Bomb" parent="." instance=ExtResource("4_fa71g")]
-position = Vector2(232, 611)
 
 [node name="Level" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_upfqc")

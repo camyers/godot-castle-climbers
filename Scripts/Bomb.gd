@@ -7,8 +7,12 @@ func _ready():
 	$AnimatedSprite2D.play("moving")
 
 func _on_body_entered(body: Node2D) -> void:
-	# if the bomb collides with the player, play the explosion animation and start the timer
+	# if the bomb collides with the player, play the explosion animation and start the timer.
 	if body.name == "Player":
+		$AnimatedSprite2D.play("explode")
+
+	# if the bomb collides with our Level Tilemap (floor and walls).
+	if body.name == "Level":
 		$AnimatedSprite2D.play("explode")
 		$Timer.start()
 
