@@ -5,7 +5,7 @@ extends CharacterBody2D
 # player movement variables
 @export var speed = 100
 @export var gravity = 200
-@export var jump_height = -100
+@export var jump_height = -110
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
