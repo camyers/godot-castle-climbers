@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://df10ubavtxokl"]
+[gd_scene load_steps=15 format=3 uid="uid://df10ubavtxokl"]
 
 [ext_resource type="PackedScene" uid="uid://bt1q38spsp8tq" path="res://Scenes/Player.tscn" id="1_oym1d"]
 [ext_resource type="Texture2D" uid="uid://1bdvd6pt2ktd" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="2_hij06"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dx2malabpf5u1" path="res://Scenes/Ladder.tscn" id="3_dyuk1"]
 [ext_resource type="PackedScene" uid="uid://bdpljpaigdews" path="res://Scenes/BombSpawner.tscn" id="5_woabg"]
 [ext_resource type="PackedScene" uid="uid://bac6ywmt2yjbd" path="res://Scenes/Wall.tscn" id="6_ipl2q"]
+[ext_resource type="PackedScene" uid="uid://orbxf5lns8v7" path="res://Scenes/CannonHandler.tscn" id="7_s21wv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yky32"]
 texture = ExtResource("2_hij06")
@@ -1246,3 +1247,6 @@ position = Vector2(128, 152)
 libraries = {
 "": SubResource("AnimationLibrary_xh7pj")
 }
+
+[node name="CannonHandler" parent="." instance=ExtResource("7_s21wv")]
+position = Vector2(88, 149)

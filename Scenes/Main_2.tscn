@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwm553p4qxdrd"]
+[gd_scene load_steps=16 format=3 uid="uid://cwm553p4qxdrd"]
 
 [ext_resource type="Texture2D" uid="uid://1bdvd6pt2ktd" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="1_k56l2"]
 [ext_resource type="Texture2D" uid="uid://sufk471liay6" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Decorations (32x32).png" id="2_rhmkf"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b8ttjogek8clr" path="res://Scenes/Platform.tscn" id="5_3ho84"]
 [ext_resource type="PackedScene" uid="uid://bac6ywmt2yjbd" path="res://Scenes/Wall.tscn" id="6_gbrw1"]
 [ext_resource type="PackedScene" uid="uid://bdpljpaigdews" path="res://Scenes/BombSpawner.tscn" id="6_pacjw"]
+[ext_resource type="PackedScene" uid="uid://orbxf5lns8v7" path="res://Scenes/CannonHandler.tscn" id="8_jlyod"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yky32"]
 texture = ExtResource("1_k56l2")
@@ -1135,16 +1136,32 @@ sources/1 = SubResource("TileSetAtlasSource_kc6so")
 
 [sub_resource type="Curve2D" id="Curve2D_tg62x"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 728, 0, 0, 0, 0, 0, 728, 80, 0, 0, 0, 0, 576, 80, 0, 0, 0, 0, 576, 160, 0, 0, 0, 0, 848, 160, 0, 0, 0, 0, 848, 240, 0, 0, 0, 0, 96, 240, 0, 0, 0, 0, 96, 320, 0, 0, 0, 0, 272, 320, 0, 0, 0, 0, 272, 400, 0, 0, 0, 0, -80, 400, 0, 0, 0, 0, -120, 400)
+"points": PackedVector2Array(0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 728, 0, 0, 0, 0, 0, 728, 80, 0, 0, 0, 0, 576, 80, 0, 0, 0, 0, 576, 160, 0, 0, 0, 0, 848, 160, 0, 0, 0, 0, 848, 240, 0, 0, 0, 0, 96, 240, 0, 0, 0, 0, 96, 320, 0, 0, 0, 0, 272, 320, 0, 0, 0, 0, 272, 400, 0, 0, 0, 0, -80, 400, 0, 0, 0, 0, -120, 400)
 }
 point_count = 13
 
-[sub_resource type="Animation" id="Animation_ean21"]
+[sub_resource type="Animation" id="Animation_27xco"]
+resource_name = "new_animation"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_a1acc"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1154,26 +1171,10 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_5fx2q"]
-resource_name = "bomb_movement"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667, 4.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jopjt"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mfqa0"]
 _data = {
-"RESET": SubResource("Animation_ean21"),
-"bomb_movement": SubResource("Animation_5fx2q")
+"RESET": SubResource("Animation_a1acc"),
+"bomb_movement": SubResource("Animation_27xco")
 }
 
 [node name="Main" type="Node2D"]
@@ -1295,13 +1296,16 @@ position = Vector2(144, 208)
 [node name="Path2D" type="Path2D" parent="BombPath"]
 curve = SubResource("Curve2D_tg62x")
 
+[node name="PathFollow2D" type="PathFollow2D" parent="BombPath/Path2D"]
+position = Vector2(40, 0)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BombPath/Path2D"]
-root_node = NodePath("../PathFollow2D")
 libraries = {
-"": SubResource("AnimationLibrary_jopjt")
+"": SubResource("AnimationLibrary_mfqa0")
 }
 
-[node name="PathFollow2D" type="PathFollow2D" parent="BombPath/Path2D"]
-
 [node name="BombSpawner" parent="." instance=ExtResource("6_pacjw")]
-position = Vector2(136, 213)
+position = Vector2(173, 214)
+
+[node name="CannonHandler" parent="." instance=ExtResource("8_jlyod")]
+position = Vector2(140, 212)
