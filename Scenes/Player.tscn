@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bt1q38spsp8tq"]
+[gd_scene load_steps=47 format=3 uid="uid://bt1q38spsp8tq"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_cdf3r"]
 [ext_resource type="Texture2D" uid="uid://dohiy8rd7cjxm" path="res://Assets/Kings and Pigs/Sprites/01-King Human/Idle (78x58).png" id="1_u0aq0"]
@@ -274,6 +274,58 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_wlyle"]
+resource_name = "move_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100, -50), Vector2(-100, -50)]
+}
+
+[sub_resource type="Animation" id="Animation_v238f"]
+resource_name = "move_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-100, -50), Vector2(100, -50)]
+}
+
+[sub_resource type="Animation" id="Animation_ry1ml"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f6e01"]
+_data = {
+"RESET": SubResource("Animation_ry1ml"),
+"move_left": SubResource("Animation_wlyle"),
+"move_right": SubResource("Animation_v238f")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_cdf3r")
 
@@ -284,5 +336,24 @@ shape = SubResource("RectangleShape2D_p1c7y")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mhu28")
 animation = &"attack"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f6e01")
+}
+
+[node name="FixedCamera2D" type="Camera2D" parent="."]
+visible = false
+enabled = false
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 656
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

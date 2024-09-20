@@ -1177,6 +1177,8 @@ _data = {
 }
 
 [node name="Main" type="Node2D"]
+metadata/_edit_vertical_guides_ = [0.0, 1152.0]
+metadata/_edit_horizontal_guides_ = [0.0, 656.0]
 
 [node name="Background" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_upfqc")

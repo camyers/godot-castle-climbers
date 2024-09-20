@@ -7,6 +7,12 @@ extends CharacterBody2D
 @export var gravity = 200
 @export var jump_height = -110
 
+# Keep track of the last direction (1 for right, -1 for left, 0 for none)
+var last_direction = 0
+
+# Check the direction of the player's movement
+var current_direction = 0
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -33,7 +39,38 @@ func horizontal_movement():
 	var horizontal_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	# horizontal velocity which moves player left or right based on input
 	velocity.x = horizontal_input * speed
+
+func _process(delta):
+	if velocity.x > 0: # Moving right
+		current_direction = 1
+	elif velocity.x < 0: # Moving left
+		current_direction = -1
 	
+	# If the direction has changed, play the appropriate animation
+	if current_direction != last_direction:
+		if current_direction == 1:
+			# Play the right animation
+			$AnimationPlayer.play("move_right")
+			
+			# limits
+			$Camera2D.limit_left = 100
+			$Camera2D.limit_bottom = 706
+			$Camera2D.limit_top = 40
+			$Camera2D.limit_right = 1052
+			
+		elif current_direction == -1:
+			# Play the left animation
+			$AnimationPlayer.play("move_left")
+			
+			# limits
+			$Camera2D.limit_left = 100
+			$Camera2D.limit_bottom = 706
+			$Camera2D.limit_top = 40
+			$Camera2D.limit_right = 1052
+		
+		# Update the last_direction variable
+		last_direction = current_direction
+
 func _physics_process(delta):
 	# vertical movement velocity (down)
 	velocity.y += gravity * delta
@@ -81,6 +118,8 @@ func _input(event):
 func _on_animated_sprite_2d_animation_finished():
 	Global.is_attacking = false
 
+func _ready() -> void:
+	current_direction = -1
 
 #func _physics_process(delta: float) -> void:
 	## Add the gravity.
