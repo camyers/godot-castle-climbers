@@ -14,7 +14,7 @@ func _on_timer_timeout() -> void:
 		0:
 			$SpeechBubble.play("boom")
 		1:
-			$SpeechBubble.play("loser")
+			$SpeechBubble.play("attack")
 		2:
 			$SpeechBubble.play("swearing")
 
