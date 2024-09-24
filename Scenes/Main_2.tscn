@@ -1326,7 +1326,7 @@ flip_h = true
 flip_v = true
 
 [node name="BoxSpawner4" parent="BoxSpawners" instance=ExtResource("9_kuyr1")]
-position = Vector2(1104, 208)
+position = Vector2(1104, 209)
 rotation = -3.14159
 flip_h = true
 flip_v = true
