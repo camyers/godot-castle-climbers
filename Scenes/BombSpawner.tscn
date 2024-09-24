@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdpljpaigdews"]
+[gd_scene load_steps=12 format=3 uid="uid://bdpljpaigdews"]
 
 [ext_resource type="Texture2D" uid="uid://chcj1yvbhw63d" path="res://Assets/Kings and Pigs/Sprites/10-Cannon/Shoot (44x28).png" id="1_co81k"]
 [ext_resource type="Script" path="res://Scripts/BombSpawner.gd" id="1_yogle"]
 [ext_resource type="Texture2D" uid="uid://01kyoh03sgx3" path="res://Assets/Kings and Pigs/Sprites/10-Cannon/Idle.png" id="2_xl33v"]
+[ext_resource type="PackedScene" uid="uid://orbxf5lns8v7" path="res://Scenes/CannonHandler.tscn" id="4_frtoh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6001v"]
 atlas = ExtResource("1_co81k")
@@ -52,6 +53,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6unjf"]
+size = Vector2(52, 23)
+
 [node name="BombSpawner" type="Node2D"]
 script = ExtResource("1_yogle")
 
@@ -62,5 +66,14 @@ autostart = true
 sprite_frames = SubResource("SpriteFrames_b3lyh")
 animation = &"cannon_fired"
 flip_h = true
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(-23, -0.5)
+shape = SubResource("RectangleShape2D_6unjf")
+
+[node name="CannonHandler" parent="." instance=ExtResource("4_frtoh")]
+position = Vector2(-33, -3)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

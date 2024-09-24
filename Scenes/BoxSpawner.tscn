@@ -1,0 +1,193 @@
+[gd_scene load_steps=24 format=3 uid="uid://5fox77q5eelo"]
+
+[ext_resource type="Script" path="res://Scripts/BoxSpawner.gd" id="1_m01nh"]
+[ext_resource type="Texture2D" uid="uid://di3ywju7v02i2" path="res://Assets/Kings and Pigs/Sprites/04-Pig Throwing a Box/Idle (26x30).png" id="2_7xvdy"]
+[ext_resource type="Texture2D" uid="uid://5g01idjjr7e0" path="res://Assets/Kings and Pigs/Sprites/04-Pig Throwing a Box/Throwing Box (26x30).png" id="3_s1pax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xx1x"]
+atlas = ExtResource("2_7xvdy")
+region = Rect2(0, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhx7p"]
+atlas = ExtResource("2_7xvdy")
+region = Rect2(26, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmsxq"]
+atlas = ExtResource("2_7xvdy")
+region = Rect2(52, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbodx"]
+atlas = ExtResource("2_7xvdy")
+region = Rect2(78, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uplo"]
+atlas = ExtResource("2_7xvdy")
+region = Rect2(104, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lk4j"]
+atlas = ExtResource("2_7xvdy")
+region = Rect2(130, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atsg0"]
+atlas = ExtResource("2_7xvdy")
+region = Rect2(156, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyl4g"]
+atlas = ExtResource("2_7xvdy")
+region = Rect2(182, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35j8k"]
+atlas = ExtResource("2_7xvdy")
+region = Rect2(208, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu47t"]
+atlas = ExtResource("3_s1pax")
+region = Rect2(0, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc7ti"]
+atlas = ExtResource("3_s1pax")
+region = Rect2(26, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q27kb"]
+atlas = ExtResource("3_s1pax")
+region = Rect2(52, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwxbp"]
+atlas = ExtResource("3_s1pax")
+region = Rect2(78, 0, 26, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvb3j"]
+atlas = ExtResource("3_s1pax")
+region = Rect2(104, 0, 26, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3lyh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xx1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhx7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmsxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbodx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uplo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lk4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atsg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyl4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35j8k")
+}],
+"loop": true,
+"name": &"pig_idle",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pu47t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc7ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q27kb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwxbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvb3j")
+}],
+"loop": false,
+"name": &"pig_throw",
+"speed": 6.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_pqns7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_3yx3o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lsuxi"]
+resource_name = "box_movement"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_upmnd"]
+_data = {
+"RESET": SubResource("Animation_3yx3o"),
+"box_movement": SubResource("Animation_lsuxi")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yedc6"]
+size = Vector2(21, 26)
+
+[node name="BoxSpawner" type="Node2D"]
+script = ExtResource("1_m01nh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b3lyh")
+animation = &"pig_throw"
+flip_h = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="BoxPath" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="BoxPath"]
+curve = SubResource("Curve2D_pqns7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="BoxPath/Path2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BoxPath/Path2D"]
+libraries = {
+"": SubResource("AnimationLibrary_upmnd")
+}
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(-1.5, 2)
+shape = SubResource("RectangleShape2D_yedc6")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

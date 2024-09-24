@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwm553p4qxdrd"]
+[gd_scene load_steps=17 format=3 uid="uid://cwm553p4qxdrd"]
 
 [ext_resource type="Texture2D" uid="uid://1bdvd6pt2ktd" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="1_k56l2"]
 [ext_resource type="Texture2D" uid="uid://sufk471liay6" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Decorations (32x32).png" id="2_rhmkf"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bac6ywmt2yjbd" path="res://Scenes/Wall.tscn" id="6_gbrw1"]
 [ext_resource type="PackedScene" uid="uid://bdpljpaigdews" path="res://Scenes/BombSpawner.tscn" id="6_pacjw"]
 [ext_resource type="PackedScene" uid="uid://orbxf5lns8v7" path="res://Scenes/CannonHandler.tscn" id="8_jlyod"]
+[ext_resource type="PackedScene" uid="uid://5fox77q5eelo" path="res://Scenes/BoxSpawner.tscn" id="9_kuyr1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yky32"]
 texture = ExtResource("1_k56l2")
@@ -1140,6 +1141,21 @@ _data = {
 }
 point_count = 13
 
+[sub_resource type="Animation" id="Animation_a1acc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_27xco"]
 resource_name = "new_animation"
 length = 15.0
@@ -1154,21 +1170,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_a1acc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PathFollow2D:progress_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mfqa0"]
@@ -1309,3 +1310,23 @@ position = Vector2(173, 214)
 
 [node name="CannonHandler" parent="." instance=ExtResource("8_jlyod")]
 position = Vector2(140, 212)
+
+[node name="BoxSpawners" type="Node2D" parent="."]
+
+[node name="BoxSpawner" parent="BoxSpawners" instance=ExtResource("9_kuyr1")]
+position = Vector2(48, 289)
+
+[node name="BoxSpawner2" parent="BoxSpawners" instance=ExtResource("9_kuyr1")]
+position = Vector2(48, 448)
+
+[node name="BoxSpawner3" parent="BoxSpawners" instance=ExtResource("9_kuyr1")]
+position = Vector2(1106, 369)
+rotation = -3.14159
+flip_h = true
+flip_v = true
+
+[node name="BoxSpawner4" parent="BoxSpawners" instance=ExtResource("9_kuyr1")]
+position = Vector2(1104, 208)
+rotation = -3.14159
+flip_h = true
+flip_v = true
