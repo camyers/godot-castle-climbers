@@ -12,6 +12,8 @@ func _on_body_entered(body: Node2D) -> void:
 		$AnimatedSprite2D.play("explode")
 		# Disable spawning in BoxSpawner
 		Global.disable_spawning()
+		# deal damage
+		body.take_damage()
 	
 	# If the bomb collides with our Wall scene, remove so that it can be respawned
 	if body.name.begins_with("Wall"):

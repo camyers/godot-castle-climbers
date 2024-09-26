@@ -7,11 +7,18 @@ extends CharacterBody2D
 @export var gravity = 200
 @export var jump_height = -110
 
+# custom signals
+signal update_lives(lives, max_lives)
+
 # Keep track of the last direction (1 for right, -1 for left, 0 for none)
 var last_direction = 0
 
 # Check the direction of the player's movement
 var current_direction = 0
+
+# Health stats
+var max_lives = 3
+var lives = 3
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -40,6 +47,18 @@ func horizontal_movement():
 	# horizontal velocity which moves player left or right based on input
 	velocity.x = horizontal_input * speed
 
+# takes damage
+func take_damage():
+	# deduct and update lives
+	if lives > 0:
+		lives = lives - 1
+		update_lives.emit(lives, max_lives)
+		print(lives)
+		# play damage animation
+		$AnimatedSprite2D.play("hit")
+		# allows animation to play
+		set_physics_process(false)
+	
 func _process(delta):
 	if velocity.x > 0: # Moving right
 		current_direction = 1
@@ -113,29 +132,10 @@ func _input(event):
 		gravity = 200
 		Global.is_climbing = false
 		Global.is_jumping = false
-	
 
 func _on_animated_sprite_2d_animation_finished():
 	Global.is_attacking = false
+	set_physics_process(true)
 
 func _ready() -> void:
 	current_direction = -1
-
-#func _physics_process(delta: float) -> void:
-	## Add the gravity.
-	#if not is_on_floor():
-		#velocity += get_gravity() * delta
-#
-	## Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
-#
-	## Get the input direction and handle the movement/deceleration.
-	## As good practice, you should replace UI actions with custom gameplay actions.
-	#var direction := Input.get_axis("ui_left", "ui_right")
-	#if direction:
-		#velocity.x = direction * SPEED
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-#
-	#move_and_slide()

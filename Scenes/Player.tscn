@@ -335,7 +335,7 @@ shape = SubResource("RectangleShape2D_p1c7y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mhu28")
-animation = &"attack"
+animation = &"hit"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 enabled = false

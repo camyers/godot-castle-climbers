@@ -12,6 +12,10 @@ func _on_body_entered(body: Node2D) -> void:
 	# if the bomb collides with the player, play the explosion animation and start the timer.
 	if body.name == "Player":
 		$AnimatedSprite2D.play("explode")
+		$Timer.start()
+		Global.is_bomb_moving = false
+		# Deal damage
+		body.take_damage()
 
 	# if the bomb collides with our Wall scene, explode and remove
 	if body.name.begins_with("Wall"):
